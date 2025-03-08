@@ -1,0 +1,38 @@
+/* Mobile menu animations */
+#mobile-menu {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    opacity: 0;
+}
+#mobile-menu.open {
+    max-height: 300px;
+    opacity: 1;
+}
+/* Hamburger icon animation */
+.hamburger-line {
+    transition: all 0.3s ease-in-out;
+}
+.hamburger.active .line1 {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+.hamburger.active .line2 {
+    opacity: 0;
+}
+.hamburger.active .line3 {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+/* Mobile menu item animations */
+.menu-item {
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    transition-delay: calc(var(--item-index) * 0.05s);
+}
+#mobile-menu.open .menu-item {
+    opacity: 1;
+    transform: translateY(0);
+}
+#mobile-menu-button:hover {
+    cursor: pointer;
+}
