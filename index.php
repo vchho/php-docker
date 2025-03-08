@@ -6,45 +6,61 @@ $todos = fetchTodos();
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PHP Learn</title>
+    <link rel="stylesheet" href="styles/navbar.css">
     <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+
+    <style>
+        .nav-link {
+            @apply px-4 py-2 text-gray-700 hover:text-gray-900 hover:bg-gray-100 rounded transition duration-300;
+        }
+
+        .nav-link.active {
+            @apply text-blue-600 font-medium;
+        }
+
+        .nav-link:hover {
+            @apply cursor-pointer;
+        }
+    </style>
 </head>
+
 <body class="bg-gray-100 min-h-screen">
+    <!-- Navigation Bar -->
+    <?php include('layouts/navbar.php') ?>
     <div class="container mx-auto px-4 py-8">
         <h1 class="text-3xl font-bold mb-6 text-center text-gray-800">Todo List</h1>
-        
-        <?php 
-        $todos = fetchTodos();
-        
-        if (is_array($todos) && !isset($todos['error'])): 
+        <?php
+        if (is_array($todos) && !isset($todos['error'])):
         ?>
             <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
                 <?php foreach (array_slice($todos, 0, 20) as $todo): ?>
-                    <div class="<?php 
-                        echo $todo['completed'] 
-                            ? 'bg-green-50 border-l-4 border-green-500' 
-                            : 'bg-white border-l-4 border-red-500'; 
-                    ?> 
+                    <div class="<?php
+                                echo $todo['completed']
+                                    ? 'bg-green-50 border-l-4 border-green-500'
+                                    : 'bg-white border-l-4 border-red-500';
+                                ?>
                     shadow-md rounded-lg p-4 transition duration-300 ease-in-out transform hover:scale-105">
-                        <h2 class="<?php 
-                            echo $todo['completed'] 
-                                ? 'text-lg font-semibold mb-2 line-through text-gray-500' 
-                                : 'text-lg font-semibold mb-2 text-gray-800'; 
-                        ?>">
+                        <h2 class="<?php
+                                    echo $todo['completed']
+                                        ? 'text-lg font-semibold mb-2 line-through text-gray-500'
+                                        : 'text-lg font-semibold mb-2 text-gray-800';
+                                    ?>">
                             <?php echo htmlspecialchars($todo['title']); ?>
                         </h2>
-                        
+
                         <div class="flex justify-between items-center mt-4">
                             <div class="flex items-center space-x-2">
                                 <span class="text-sm text-gray-600">User ID: <?php echo htmlspecialchars($todo['userId']); ?></span>
-                                <span class="<?php 
-                                    echo $todo['completed'] 
-                                        ? 'bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs' 
-                                        : 'bg-red-100 text-red-800 px-2 py-1 rounded-full text-xs'; 
-                                ?>">
+                                <span class="<?php
+                                                echo $todo['completed']
+                                                    ? 'bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs'
+                                                    : 'bg-red-100 text-red-800 px-2 py-1 rounded-full text-xs';
+                                                ?>">
                                     <?php echo $todo['completed'] ? 'Completed' : 'Pending'; ?>
                                 </span>
                             </div>
@@ -61,5 +77,7 @@ $todos = fetchTodos();
             </div>
         <?php endif; ?>
     </div>
+    <script src="scripts/navbar.js"></script>
 </body>
+
 </html>
