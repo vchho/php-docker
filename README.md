@@ -13,3 +13,8 @@ php -S localhost:8888
 ```bash
 docker compose up
 ```
+
+## installing sqlite in php
+```
+sudo apt-get install php8.2-sqlite3
+```

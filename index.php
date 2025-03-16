@@ -32,6 +32,10 @@ $todos = fetchTodos();
 <body class="bg-gray-100 min-h-screen">
     <!-- Navigation Bar -->
     <?php include('layouts/navbar.php') ?>
+
+    <!-- <?php phpinfo() ?> -->
+
+    <!--         print_r(PDO::getAvailableDrivers()); -->
     <div class="container mx-auto px-4 py-8">
         <h1 class="text-3xl font-bold mb-6 text-center text-gray-800">Todo List</h1>
         <?php
